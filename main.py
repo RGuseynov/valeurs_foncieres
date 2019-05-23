@@ -41,11 +41,15 @@ def selection_cles(dictionnaire, *keys):
 
 dict_brut = remplissage_dictionnaire("data_foncieres_en_csv/2018.csv")
 dict_traite = selection_cles(dict_brut, "date_mutation", "valeur_fonciere", "type_local", "surface_reelle_bati",
-                             "longitude", "latitude")
+                             "code_postal")
 
 
 df = pandas.DataFrame(dict_traite)
-print(df)
 
-df_just_appart = df[df["type_local"] == "Appartement"]
-print(df_just_appart)
+df_appartement = df.loc[df["type_local"] == "Appartement"]
+
+df_appartement_lyon = df_appartement.loc[df_appartement['code_postal'].str.startswith("6900")]
+print(df_appartement_lyon)
+
+
+
