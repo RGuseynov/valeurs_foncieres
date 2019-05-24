@@ -19,7 +19,7 @@ def remplissage_dictionnaire(fichier_text):
     dictionnaire = creation_dictionnaire(recuperation_ligne1(fichier_text))
     with open(fichier_text, "r") as file:
         file.readline()
-        lines = file.readlines(1000)
+        lines = file.readlines()
         for line in lines:
             list_contenu_ligne = line.strip().split(",")
             i = 0
@@ -50,6 +50,4 @@ df_appartement = df.loc[df["type_local"] == "Appartement"]
 
 df_appartement_lyon = df_appartement.loc[df_appartement['code_postal'].str.startswith("6900")]
 print(df_appartement_lyon)
-
-
 
