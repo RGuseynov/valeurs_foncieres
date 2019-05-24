@@ -1,0 +1,71 @@
+{
+  "fields": ["nom", "nomreduit", "insee", "libofficiel", "gid"],
+  "values": [
+    {
+      "nom": "LYON 1ER",
+      "gid": "1",
+      "insee": "69381",
+      "nomreduit": "LYON 1",
+      "libofficiel": "Lyon 1er Arrondissement"
+    },
+    {
+      "nom": "LYON 3EME",
+      "gid": "2",
+      "insee": "69383",
+      "nomreduit": "LYON 3",
+      "libofficiel": "Lyon 3e Arrondissement"
+    },
+    {
+      "nom": "LYON 5EME",
+      "gid": "3",
+      "insee": "69385",
+      "nomreduit": "LYON 5",
+      "libofficiel": "Lyon 5e Arrondissement"
+    },
+    {
+      "nom": "LYON 2EME",
+      "gid": "4",
+      "insee": "69382",
+      "nomreduit": "LYON 2",
+      "libofficiel": "Lyon 2e Arrondissement"
+    },
+    {
+      "nom": "LYON 4EME",
+      "gid": "8",
+      "insee": "69384",
+      "nomreduit": "LYON 4",
+      "libofficiel": "Lyon 4e Arrondissement"
+    },
+    {
+      "nom": "LYON 7EME",
+      "gid": "5",
+      "insee": "69387",
+      "nomreduit": "LYON 7",
+      "libofficiel": "Lyon 7e Arrondissement"
+    },
+    {
+      "nom": "LYON 9EME",
+      "gid": "9",
+      "insee": "69389",
+      "nomreduit": "LYON 9",
+      "libofficiel": "Lyon 9e Arrondissement"
+    },
+    {
+      "nom": "LYON 8EME",
+      "gid": "6",
+      "insee": "69388",
+      "nomreduit": "LYON 8",
+      "libofficiel": "Lyon 8e Arrondissement"
+    },
+    {
+      "nom": "LYON 6EME",
+      "gid": "7",
+      "insee": "69386",
+      "nomreduit": "LYON 6",
+      "libofficiel": "Lyon 6e Arrondissement"
+    }
+  ],
+  "nb_results": 9,
+  "table_href": "https://download.data.grandlyon.com/ws/grandlyon/adr_voie_lieu.adrarrond.json",
+  "layer_name": "adr_voie_lieu.adrarrond"
+}
