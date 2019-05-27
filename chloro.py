@@ -9,7 +9,7 @@ geo_arron = "https://transcode.geo.data.gouv.fr/services/5bfd5598cb932f8781e55ed
 
 
 # Initialize the map:
-m = folium.Map(location=[45.750000, 4.850000], zoom_start=13)
+m = folium.Map(location=[45.750000, 4.850000], zoom_start=12)
  
 folium.GeoJson(
     geo_arron,
