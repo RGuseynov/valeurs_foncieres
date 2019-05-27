@@ -11,24 +11,24 @@ geo_arron = "https://transcode.geo.data.gouv.fr/services/5bfd5598cb932f8781e55ed
 # Initialize the map:
 m = folium.Map(location=[45.750000, 4.850000], zoom_start=13)
  
+folium.GeoJson(
+    geo_arron,
+    name='geojson'
+).add_to(m)
+
+
 # Add the color for the chloropleth:
 m.choropleth(
- geo_data=geo_arron,
- name='choropleth',
- columns=['latitude', 'longitude'],
- key_on='feature.id',
- fill_color='YlGn',
- fill_opacity=0.7,
- line_opacity=0.2,
- legend_name='valeurs foncieres'
+    geo_data=geo_arron,
+    name='choropleth',
+    columns=['latitude', 'longitude'],
+    key_on='feature.id',
+    fill_color='YlGn',
+    fill_opacity=0.3,
+    line_opacity=0.2,
+    legend_name='valeurs foncieres'
 )
 folium.LayerControl().add_to(m)
- 
- 
-# folium.GeoJson(
-#     urlArron,
-#     name='geojson'
-# ).add_to(m)
 
 # Save to html
 m.save('test.html')
