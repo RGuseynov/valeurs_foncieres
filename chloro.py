@@ -7,8 +7,8 @@ import csv
 geo_arrond = os.path.join('lyon_arron.json')
 
 
-donnees = os.path.join('full.csv')
-donnees = pd.read_csv('full.csv')
+donnees = os.path.join('../full.csv')
+donnees = pd.read_csv('../full.csv')
 
 # Initialize the map:
 m = folium.Map(location=[45.750000, 4.850000], zoom_start=13)
