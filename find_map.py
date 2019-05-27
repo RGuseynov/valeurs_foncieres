@@ -20,3 +20,19 @@ class Map:
             ).add_to(self.map)
         self.map.save('index.html')
 
+    def draw_arrondissement(self, geo, couleur):
+        folium.Choropleth(
+            geo_data=geo,
+            name='choropleth',
+            columns=['latitude', 'longitude'],
+            key_on='feature.id',
+            fill_color=couleur,
+            fill_opacity=0.3,
+            line_opacity=0.2,
+            legend_name='valeurs foncieres'
+        ).add_to(self.map)
+
+    def sauvegarde(self):
+        # Save to html
+        folium.LayerControl().add_to(self.map)
+        self.map.save('test.html')

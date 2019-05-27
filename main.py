@@ -27,11 +27,11 @@ def prix_moyen_arr(df):
 
 def couleur_selon_variation(value):
     if value > 1.05:
-        return "Green"
+        return "green"
     elif value < 0.95:
-        return "Red"
+        return "red"
     else:
-        return "Yellow"
+        return "yellow"
 
 # création d'une liste(année) de listes(prix moyen) a partir des 5 fichiers csv
 # list_prix_arr = []
@@ -62,8 +62,16 @@ print(variation_2014_2018)
 # data_trie.plot(kind='scatter', x='surface_reelle_bati', y='valeur_fonciere', color='red')
 # plt.show()
 
+map_Lyon = Map(45.763664999057148, 4.856268)
+
 with open("adr_voie_lieu.json", "r") as file:
     json_arr = json.load(file)
 
 for arr in json_arr["features"]:
     geodata = {"type": "FeatureCollection", "features": [arr]}
+    print(geodata)
+    print(arr["properties"]["gid"])
+    print(variation_2014_2018.loc[int(arr["properties"]["gid"]), ["Couleur"]].values[0])
+    map_Lyon.draw_arrondissement(geodata, variation_2014_2018.loc[int(arr["properties"]["gid"]), ["Couleur"]].values[0])
+
+map_Lyon.sauvegarde()
