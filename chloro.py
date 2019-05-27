@@ -9,7 +9,7 @@ import csv
 geo_arron = 'adr_voie_lieu.json'
 
 # Initialize the map:
-m = folium.Map(location=[45.750000, 4.850000], zoom_start=13)
+m = folium.Map(location=[45.750000, 4.850000], zoom_start=12)
  
 folium.GeoJson(
     geo_arron,
