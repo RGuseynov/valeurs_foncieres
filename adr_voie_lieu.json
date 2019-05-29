@@ -216,12 +216,12 @@
     {
       "type": "Feature",
       "properties": {
-        "gml_id": "adr_voie_lieu.adrarrond.2",
+        "gml_id": "adr_voie_lieu.adrarrond.3",
         "nom": "LYON 3EME",
         "nomreduit": "LYON 3",
         "insee": "69383",
         "libofficiel": "Lyon 3e Arrondissement",
-        "gid": "2"
+        "gid": "3"
       },
       "geometry": {
         "type": "Polygon",
@@ -477,12 +477,12 @@
     {
       "type": "Feature",
       "properties": {
-        "gml_id": "adr_voie_lieu.adrarrond.3",
+        "gml_id": "adr_voie_lieu.adrarrond.5",
         "nom": "LYON 5EME",
         "nomreduit": "LYON 5",
         "insee": "69385",
         "libofficiel": "Lyon 5e Arrondissement",
-        "gid": "3"
+        "gid": "5"
       },
       "geometry": {
         "type": "Polygon",
@@ -935,12 +935,12 @@
     {
       "type": "Feature",
       "properties": {
-        "gml_id": "adr_voie_lieu.adrarrond.4",
+        "gml_id": "adr_voie_lieu.adrarrond.2",
         "nom": "LYON 2EME",
         "nomreduit": "LYON 2",
         "insee": "69382",
         "libofficiel": "Lyon 2e Arrondissement",
-        "gid": "4"
+        "gid": "2"
       },
       "geometry": {
         "type": "Polygon",
@@ -1222,12 +1222,12 @@
     {
       "type": "Feature",
       "properties": {
-        "gml_id": "adr_voie_lieu.adrarrond.8",
+        "gml_id": "adr_voie_lieu.adrarrond.4",
         "nom": "LYON 4EME",
         "nomreduit": "LYON 4",
         "insee": "69384",
         "libofficiel": "Lyon 4e Arrondissement",
-        "gid": "8"
+        "gid": "4"
       },
       "geometry": {
         "type": "Polygon",
@@ -1463,12 +1463,12 @@
     {
       "type": "Feature",
       "properties": {
-        "gml_id": "adr_voie_lieu.adrarrond.5",
+        "gml_id": "adr_voie_lieu.adrarrond.7",
         "nom": "LYON 7EME",
         "nomreduit": "LYON 7",
         "insee": "69387",
         "libofficiel": "Lyon 7e Arrondissement",
-        "gid": "5"
+        "gid": "7"
       },
       "geometry": {
         "type": "Polygon",
@@ -2828,12 +2828,12 @@
     {
       "type": "Feature",
       "properties": {
-        "gml_id": "adr_voie_lieu.adrarrond.6",
+        "gml_id": "adr_voie_lieu.adrarrond.8",
         "nom": "LYON 8EME",
         "nomreduit": "LYON 8",
         "insee": "69388",
         "libofficiel": "Lyon 8e Arrondissement",
-        "gid": "6"
+        "gid": "8"
       },
       "geometry": {
         "type": "Polygon",
@@ -3249,12 +3249,12 @@
     {
       "type": "Feature",
       "properties": {
-        "gml_id": "adr_voie_lieu.adrarrond.7",
+        "gml_id": "adr_voie_lieu.adrarrond.6",
         "nom": "LYON 6EME",
         "nomreduit": "LYON 6",
         "insee": "69386",
         "libofficiel": "Lyon 6e Arrondissement",
-        "gid": "7"
+        "gid": "6"
       },
       "geometry": {
         "type": "Polygon",
