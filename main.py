@@ -5,6 +5,9 @@ import matplotlib.pyplot as plt
 import json
 
 
+geo_arron = "https://transcode.geo.data.gouv.fr/services/5bfd5598cb932f8781e55ede/feature-types/ms:adr_voie_lieu.adrarrond?format=GeoJSON&projection=WGS84"
+
+
 def trie_df(df):
     df = df[["date_mutation", "valeur_fonciere", "type_local", "surface_reelle_bati", "code_postal"]]
     df = df[df["type_local"] == "Appartement"]
@@ -24,6 +27,11 @@ def prix_moyen_arr(df):
         list_prix_moy_arr.append(prix_m2(df[df["code_postal"] == i]).mean())
     return list_prix_moy_arr  # renvoi une list des prix moyens: un indice = un arrondissement
 
+def add_layers(self, geo_arron)
+        folium.GeoJson(
+            geo_arron, 
+            name='geojson'
+        ).add_to(self.map)
 
 def couleur_selon_variation(value):
     if value > 1.05:
