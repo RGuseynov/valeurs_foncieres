@@ -4,6 +4,8 @@ from find_map import Map
 import matplotlib.pyplot as plt
 import json
 import math
+from flask import request, url_for
+from flask_api import FlaskAPI, status, exceptions
 
 
 def trie_df(df):
@@ -40,7 +42,7 @@ def distance_entre_2_points(x1, y1, x2, y2):
 
 
 # prend en parametre la longitude, latitude et le json contenant la geo_data, retourne le numero de l'arrondissement
-def plus_proche_point(longitude, latitude, geo_json):
+def plus_proche_arrondissement(longitude, latitude, geo_json):
     distance_min = 100
     arrondissement = "0"
     for arr in geo_json["features"]:
@@ -52,6 +54,14 @@ def plus_proche_point(longitude, latitude, geo_json):
                 arrondissement = arr["properties"]["gid"]
     return arrondissement
 
+
+def conversion_pourcentage(nombre):
+    if nombre > 1:
+        return round((nombre - 1) * 100)
+    elif nombre < 1 and nombre > 0:
+        return round(-(1 - nombre) * 100)
+    else:
+        raise ValueError
 
 # creation de 5 csv trie a partir des 5 csv de base
 # for i in range(2014, 2019):
@@ -98,7 +108,25 @@ for arr in json_arr["features"]:
 map_Lyon.sauvegarde()
 
 
-print(plus_proche_point(4.81307, 45.77111799905714, json_arr))
+print(plus_proche_arrondissement(4.81307, 45.77111799905714, json_arr))
+print(variation_2014_2018.loc[[1], ["Variation"]])
+print(variation_2014_2018.loc[[1], ["Variation"]].values[0])
+print(variation_2014_2018.loc[[1], ["Variation"]].values[0][0])
+
+app = FlaskAPI(__name__)
+
+
+@app.route('/coordonnee', methods=['GET', 'POST'])
+def contact():
+    if request.method == 'POST':
+        arrondissement = plus_proche_arrondissement(float(request.form["longitude"]), float(request.form["latitude"]), json_arr)
+        variation = conversion_pourcentage(variation_2014_2018.loc[[int(arrondissement)], ["Variation"]].values[0][0])
+        return f"Vous habitez dans l'arrondissement {arrondissement}, le prix y a varier de: {variation}% entre 2014 et 2018"
+    return '<form action="" method="post">Longitude: <input type="text" name="longitude" /> Latitude: <input type="text" name="latitude" /><input type="submit" value="Envoyer" /></form>'
+
+
+app.run()
+
 
 
 # des tests en dessous
