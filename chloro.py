@@ -16,6 +16,12 @@ folium.GeoJson(
     name='geojson'
 ).add_to(m)
 
+# text = 'your text here'
+# iframe = folium.IFrame(text, width=700, height=450)
+# popup = folium.Popup(iframe, max_width=3000)
+# Text = folium.Marker(location=[45.750000,4.850000], popup=popup,
+#                      icon=folium.Icon(icon_color='green'))
+# m.add_child(Text)
 
 # Add the color for the chloropleth:
 m.choropleth(
@@ -26,8 +32,10 @@ m.choropleth(
     fill_color='YlGn',
     fill_opacity=0.3,
     line_opacity=0.2,
-    legend_name='valeurs foncieres'
+    legend_name='valeurs foncieres',
 )
+
+
 folium.LayerControl().add_to(m)
 
 # Save to html
