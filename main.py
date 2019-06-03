@@ -3,6 +3,7 @@ import numpy as np
 from find_map import Map
 import matplotlib.pyplot as plt
 import json
+import math
 
 
 def trie_df(df):
@@ -32,6 +33,24 @@ def couleur_selon_variation(value):
         return "red"
     else:
         return "yellow"
+
+
+def distance_entre_2_points(x1, y1, x2, y2):
+    return math.sqrt((x1 - x2)**2 + (y1 - y2)**2)
+
+
+# prend en parametre la longitude, latitude et le json contenant la geo_data, retourne le numero de l'arrondissement
+def plus_proche_point(longitude, latitude, geo_json):
+    distance_min = 100
+    arrondissement = "0"
+    for arr in geo_json["features"]:
+        print(arr)
+        for coords in arr["geometry"]["coordinates"]:
+            print(coords)
+            if distance_entre_2_points(longitude, latitude, coords[0][0], coords[0][1]) < distance_min:
+                distance_min = distance_entre_2_points(longitude, latitude, coords[0][0], coords[0][1])
+                arrondissement = arr["properties"]["gid"]
+    return arrondissement
 
 
 # creation de 5 csv trie a partir des 5 csv de base
@@ -74,14 +93,12 @@ with open("adr_voie_lieu.json", "r") as file:
 
 for arr in json_arr["features"]:
     geodata = {"type": "FeatureCollection", "features": [arr]}
-    print(geodata)
-    print(arr["properties"]["gid"])
-    print(variation_2014_2018.loc[int(arr["properties"]["gid"]), ["Couleur"]].values[0])
     map_Lyon.draw_arrondissement(geodata, variation_2014_2018.loc[int(arr["properties"]["gid"]), ["Couleur"]].values[0])
 
 map_Lyon.sauvegarde()
 
 
+print(plus_proche_point(4.81307, 45.77111799905714, json_arr))
 
 
 # des tests en dessous
