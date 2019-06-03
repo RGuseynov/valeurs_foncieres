@@ -12,13 +12,14 @@ class Map:
             attr='My Data Attribution'
         )
 
-    def draw_map(self, iter_longitude, iter_latitude):
-        for i in range(len(iter_longitude)):
-            folium.Marker(
-                location=[iter_longitude[i], iter_latitude[i]],
-                icon=folium.Icon(color='white', icon='info-sign')
-            ).add_to(self.map)
-        self.map.save('index.html')
+    # def draw_map(self, iter_longitude, iter_latitude):
+    #     for i in range(len(iter_longitude)):
+    #         folium.Marker(
+    #             location=[iter_longitude[i], iter_latitude[i]],
+    #             icon=folium.Icon(color='white', icon='info-sign')
+    #         ).add_to(self.map)
+    #     self.map.save('test.html')
+
 
     def draw_arrondissement(self, geo, couleur):
         folium.Choropleth(
@@ -28,9 +29,12 @@ class Map:
             key_on='feature.id',
             fill_color=couleur,
             fill_opacity=0.3,
-            line_opacity=0.2,
+            line_opacity=1,
+            line_weight=1,
+            line_color='blue',
             legend_name='valeurs foncieres'
         ).add_to(self.map)
+        # folium.LayerControl().add_to(self.map)
 
     def sauvegarde(self):
         # Save to html
