@@ -29,7 +29,9 @@ class Map:
             key_on='feature.id',
             fill_color=couleur,
             fill_opacity=0.3,
-            line_opacity=0.2,
+            line_opacity=1,
+            line_weight=1,
+            line_color='blue',
             legend_name='valeurs foncieres'
         ).add_to(self.map)
         # folium.LayerControl().add_to(self.map)
