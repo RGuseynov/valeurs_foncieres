@@ -79,6 +79,8 @@ for i in range(2014, 2019):
 df_prix = pd.DataFrame(list_prix_arr, index=[i for i in range(2014, 2019)], columns=[i for i in range(1, 10)])
 df_prix = df_prix.transpose()
 
+print(df_prix)
+
 # creation d'une copie du dataframe
 df_variation = df_prix.copy()
 
@@ -98,6 +100,19 @@ print(variation_2014_2018)
 
 map_Lyon = Map(45.763664999057148, 4.856268)
 
+data = [['2014', 3], ['2015', 2.7], ['2016', 3.2],['2017',3.8],['2018',2.3]]
+df = pd.DataFrame(data, columns = ['Année', 'Valeur'])
+
+# test dictionaire points
+# points_central = {"Lyon 1": [45.7694158,4.8300276], "Lyon 2": [45.7529002,4.8268543], "Lyon 3": [45.7603831,4.849664],
+#           "Lyon 4": [45.774195,4.827882], "Lyon 5": [45.7573809,4.8007715], "Lyon 6": [45.7683968,4.8493863],
+#           "Lyon 7": [45.7460481,4.8417503], "Lyon 8": [45.7348248,4.8741702], "Lyon 9": [45.7739471,4.8069094]}
+
+points_central = ["Lyon 1", 45.7694158, 4.8300276, "Lyon 2", 45.7529002, 4.8268543, "Lyon 3", 45.7603831,4.849664,
+          "Lyon 4", 45.774195, 4.827882, "Lyon 5", 45.7573809, 4.8007715, "Lyon 6", 45.7683968, 4.8493863,
+          "Lyon 7", 45.7460481, 4.8417503, "Lyon 8", 45.7348248, 4.8741702, "Lyon 9", 45.7739471, 4.8069094]
+
+
 with open("adr_voie_lieu.json", "r") as file:
     json_arr = json.load(file)
 
@@ -105,13 +120,14 @@ for arr in json_arr["features"]:
     geodata = {"type": "FeatureCollection", "features": [arr]}
     map_Lyon.draw_arrondissement(geodata, variation_2014_2018.loc[int(arr["properties"]["gid"]), ["Couleur"]].values[0])
 
+# dessin des marqueurs pour voir l'évolution du prix
+index_de_points = 0
+for index, row in df_prix.iterrows():
+    map_Lyon.add_marker(row, points_central[index_de_points + 1], points_central[index_de_points + 2],  points_central[index_de_points])
+    index_de_points = index_de_points + 3
+
 map_Lyon.sauvegarde()
 
-
-print(plus_proche_arrondissement(4.81307, 45.77111799905714, json_arr))
-print(variation_2014_2018.loc[[1], ["Variation"]])
-print(variation_2014_2018.loc[[1], ["Variation"]].values[0])
-print(variation_2014_2018.loc[[1], ["Variation"]].values[0][0])
 
 app = FlaskAPI(__name__)
 

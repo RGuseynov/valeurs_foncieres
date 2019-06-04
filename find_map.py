@@ -1,5 +1,5 @@
 import folium
-
+import vincent
 
 class Map:
     def __init__(self, longitude, latitude):
@@ -40,3 +40,27 @@ class Map:
         # Save to html
         folium.LayerControl().add_to(self.map)
         self.map.save('test.html')
+
+    def add_marker(self, serie, longitude, latitude, arrondissement):
+        liste_annee = []
+        liste_valeur = []
+        for annee in serie.index :
+            liste_annee.append(annee)
+        for valeur in serie.values :
+            liste_valeur.append(valeur)
+
+        scatter_points = {
+            'x': liste_annee,
+            'prix au m2': liste_valeur,
+        }
+
+        scatter_chart = vincent.Bar(scatter_points,
+                                iter_idx='x',
+                                width=300,
+                                height=200)
+        scatter_chart.axis_titles(x='Année', y='Prix au m2')
+        scatter_chart.legend(title=arrondissement)
+
+        popup = folium.Popup()
+        folium.Vega(scatter_chart, width = 400, height=250).add_to(popup)
+        folium.Marker([longitude, latitude], popup=popup).add_to(self.map)
